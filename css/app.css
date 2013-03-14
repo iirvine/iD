@@ -1051,6 +1051,7 @@ div.combobox {
     border-bottom: 1px solid #ccc;
     border-radius: 0;
     overflow: hidden;
+    -webkit-animation:fadeIn 500ms ease 0ms both;
 }
 
 .grid-inner {
@@ -1081,9 +1082,10 @@ div.combobox {
 }
 
 .preset-inspect {
-  position: relative;
-  background: white;
-  border-bottom: 1px solid #ccc;
+    position: relative;
+    background: white;
+    border-bottom: 1px solid #ccc;
+    -webkit-animation:fadeInInspect 500ms ease 0ms both;
 }
 
 .grid-entry .preset-icon-fill.area {
@@ -1963,6 +1965,19 @@ a.success-action {
     stroke-opacity: 1;
     stroke-dasharray: 5, 5;
 }
+
+/* Keyframe animations
+------------------------------------------------------- */
+
+@-webkit-keyframes fadeIn {
+  0%    { opacity:0;}
+  100%  { opacity:1;}
+  }
+
+@-webkit-keyframes fadeInInspect {
+  0%    { opacity:0; max-height: 0; padding-top: 0; padding-bottom: 0;}
+  100%  { opacity:1; max-height: 160px; top-bottom: 20px; padding-bottom: 20px;}
+  }
 
 /* Media Queries
 ------------------------------------------------------- */
