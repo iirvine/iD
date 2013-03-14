@@ -6,7 +6,8 @@
         "collection_times"
     ],
     "geometry": [
-        "point"
+        "point",
+        "vertex"
     ],
     "tags": {
         "amenity": "post_box"

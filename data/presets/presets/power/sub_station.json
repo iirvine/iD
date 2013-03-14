@@ -1,14 +1,13 @@
 {
-    "name": "amenity",
+    "name": "substation",
     "fields": [
-        "amenity"
+        "operator"
     ],
     "geometry": [
         "point",
-        "vertex",
         "area"
     ],
     "tags": {
-        "amenity": "*"
+        "power": "substation"
     }
 }

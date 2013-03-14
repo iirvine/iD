@@ -6,7 +6,8 @@
         "shelter"
     ],
     "geometry": [
-        "point"
+        "point",
+        "vertex"
     ],
     "tags": {
         "highway": "bus_stop"

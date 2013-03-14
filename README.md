@@ -13,10 +13,12 @@
 
 ## Participate!
 
-* [Try out the latest stable release](http://geowiki.com/iD/)
+* [Try out the latest stable release](http://openstreetmap.us/iD/release)
 * [Read up on Contributing and the code style of iD](CONTRIBUTING.md)
 * See [open issues in the issue tracker](https://github.com/systemed/iD/issues?state=open) if you're looking for something to do
+* [Translate!](https://www.transifex.com/projects/p/id-editor)
 
+[![translation chart](https://www.transifex.com/projects/p/id-editor/chart/image_png)](https://www.transifex.com/projects/p/id-editor/)
 ## Installation
 
 To run the current development version, fork this project and serve it locally.

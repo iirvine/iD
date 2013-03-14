@@ -29,7 +29,11 @@ iD.ui.preset = function(context) {
         keys = [];
 
         formwrap = selection.append('div');
-        draw(formwrap, preset.fields);
+
+        var geometry = entity.geometry(context.graph());
+        draw(formwrap, preset.fields.filter(function(f) {
+            return f.matchGeometry(geometry);
+        }));
 
         var wrap = selection.append('div')
             .attr('class', 'col12 more-buttons inspector-inner');
@@ -41,26 +45,34 @@ iD.ui.preset = function(context) {
 
         wraplabel.append('span')
             .attr('class', 'deemphasize')
-            .text('Add additional forms');
+            .text(t('inspector.show_additional'));
 
        formbuttonwrap = wrap.append('div')
             .attr('class', 'col9 preset-input');
 
         formbuttonwrap.selectAll('button')
-            .data(preset.additional)
+            .data(context.presets().universal())
             .enter()
             .append('button')
                 .attr('class', 'preset-add-field')
-                .attr('title', function(d) { return d.label(); })
                 .on('click', addForm)
+                .each(tooltip)
                 .append('span')
                     .attr('class', function(d) { return 'icon ' + d.icon; });
+
+        function tooltip(d) {
+            d3.select(this).call(bootstrap.tooltip()
+                .placement('top')
+                .title(d.label()));
+        }
 
         function addForm(d) {
             draw(formwrap, [d]);
             d3.select(this).remove();
             if (!wrap.selectAll('button').node()) wrap.remove();
         }
+
+        if (!preset.additional || !preset.additional.length) wrap.remove();
     }
 
     function formKey(d) {
@@ -100,12 +112,6 @@ iD.ui.preset = function(context) {
             if (haveKey(p.key) || _.any(p.keys, haveKey)) {
                 draw(formwrap, [p]);
                 d3.select(this).remove();
-            }
-        });
-
-        context.presets().universal().forEach(function(p) {
-            if (haveKey(p.key) || _.any(p.keys, haveKey)) {
-                draw(formwrap, [p]);
             }
         });
 
